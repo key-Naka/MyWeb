@@ -178,7 +178,7 @@ function blackhole(element) {
 
         setInterval(() => {
             this.querySelector('span').classList.toggle('loading');
-        }, 600);
+        }, 800);
 
         // // Start the return cycle after full expansion (20-30 seconds)
         // setTimeout(() => {
@@ -236,18 +236,15 @@ function blackhole(element) {
 }
 
 // Initialize when DOM is loaded
-
+blackhole('#blackhole');
 
 document.addEventListener('DOMContentLoaded', () => {
-    blackhole('#blackhole');
-
-    
     const blackholeCenterHover = document.querySelector('.blackhole-centerHover');
     const container = document.querySelector('#blackhole');
 
     let originalWidth = window.innerWidth; // 添加这行代码
-    let originalLeft = (container.offsetWidth - blackholeCenterHover.offsetWidth) / 2 +128;
-    let originalTop = (container.offsetHeight - blackholeCenterHover.offsetHeight) / 2 +128;
+    let originalLeft = (container.offsetWidth - blackholeCenterHover.offsetWidth) / 2 + 128;
+    let originalTop = (container.offsetHeight - blackholeCenterHover.offsetHeight) / 2 + 128;
 
     function updatePosition() {
         if (window.innerWidth < originalWidth) {
@@ -277,9 +274,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let allContentLoaded = false;
     window.addEventListener('load', () => {
         allContentLoaded = true;
+         clearTimeout(loadTimeout);
     });
 
     enterButton.addEventListener('click', () => {
+        loadTimeout = setTimeout(() => {
+            allContentLoaded = true;
+        }, 10000);
+       
         const checkInterval = setInterval(() => {
             if (allContentLoaded) {
                 clearInterval(checkInterval);
@@ -295,8 +297,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
         setTimeout(() => {
             document.getElementById('loading-screen').remove();
-            mainContent.style.display = 'block';
         }, 1000);
     }
 
 });
+
+

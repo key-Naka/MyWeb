@@ -1,0 +1,106 @@
+
+.radial-menu {
+    position: fixed;
+    top: 25px;
+    right: 50px;
+    width: 80px;
+    height: 80px;
+    z-index: 1000;
+}
+
+#fabRadial,
+.menu-item {
+    position: relative;
+    cursor: pointer;
+}
+
+#fabRadial {
+    
+    width: 80px;
+    height: 80px;
+    border: none;
+    font-size: 3rem;
+    border-radius: 50%;
+    background-color:rgba(0, 0, 0, 0.1);
+    color: #f0f2f5;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1), background-color 0.3s cubic-bezier(0.65, 0, 0.35, 1), box-shadow 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+    box-shadow: 0 0 20px -5px #67e8f9;
+    border: 2px solid aliceblue;
+}
+
+#fabRadial:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px -5px #67e8f9;
+}
+
+#fabRadial.open {
+    background-color: rgba(21, 18, 160, 0.1);
+    color: #fff;
+}
+
+.menu-item {
+    width: 65px;
+    height: 65px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid aliceblue;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #374151;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+        opacity 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+        background-color 0.2s ease,
+        color 0.2s ease;
+    position: absolute;
+    top: calc((80px - 65px) / 2);
+    left: calc((80px - 65px) / 2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    font-size: 1rem;
+    font-weight: 600;
+   
+}
+
+.menu-item i {
+    font-size: 1.5rem;
+    color: #06b6d4;
+    text-shadow: 0 0 15px #06b6d4;
+    font-style: normal;
+    
+}
+
+.radial-menu.open .menu-item {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.radial-menu.open .menu-item:nth-child(2) {
+    transform: translate(calc(140px * cos(180deg)), calc(140px * sin(180deg) * -1));
+    transition-delay: 0.05s;
+}
+
+.radial-menu.open .menu-item:nth-child(3) {
+    transform: translate(calc(140px * cos(210deg)), calc(140px * sin(210deg) * -1));
+    transition-delay: 0.1s;
+}
+
+.radial-menu.open .menu-item:nth-child(4) {
+    transform: translate(calc(140px * cos(240deg)), calc(140px * sin(240deg) * -1));
+    transition-delay: 0.15s;
+}
+
+.radial-menu.open .menu-item:nth-child(5) {
+    transform: translate(calc(140px * cos(270deg)), calc(140px * sin(270deg) * -1));
+    transition-delay: 0.2s;
+}
+
+.menu-item:hover {
+    background-color:rgba(53, 68, 70, 0.5);
+    color: #fff;
+}
