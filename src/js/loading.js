@@ -236,9 +236,10 @@ function blackhole(element) {
 }
 
 // Initialize when DOM is loaded
-blackhole('#blackhole');
+
 
 document.addEventListener('DOMContentLoaded', () => {
+    blackhole('#blackhole');
     const blackholeCenterHover = document.querySelector('.blackhole-centerHover');
     const container = document.querySelector('#blackhole');
 
@@ -272,22 +273,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.getElementById('main-content');
 
     let allContentLoaded = false;
+
     window.addEventListener('load', () => {
         allContentLoaded = true;
-         clearTimeout(loadTimeout);
     });
 
     enterButton.addEventListener('click', () => {
         loadTimeout = setTimeout(() => {
             allContentLoaded = true;
+            hideLoadingScreen();
         }, 10000);
-       
+
         const checkInterval = setInterval(() => {
             if (allContentLoaded) {
                 clearInterval(checkInterval);
-                hideLoadingScreen();
+                
             }
-        }, 3000);
+        }, 100);
 
     });
 
