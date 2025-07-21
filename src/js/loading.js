@@ -282,14 +282,14 @@ document.addEventListener('DOMContentLoaded', () => {
         loadTimeout = setTimeout(() => {
             allContentLoaded = true;
             hideLoadingScreen();
-        }, 10000);
+        }, 6000);
 
         const checkInterval = setInterval(() => {
             if (allContentLoaded) {
                 clearInterval(checkInterval);
-                
+                hideLoadingScreen();
             }
-        }, 100);
+        }, 3000);
 
     });
 
